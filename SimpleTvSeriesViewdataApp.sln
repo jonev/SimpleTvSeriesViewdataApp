@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTvSeriesViewdataApp", "SimpleTvSeriesViewdataApp\SimpleTvSeriesViewdataApp.csproj", "{6682AB3F-7176-401E-A290-8136E89CAE38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestsSimpleTvSeriesViewdataApp", "XUnitTestsSimpleTvSeriesViewdataApp\XUnitTestsSimpleTvSeriesViewdataApp.csproj", "{ED75E929-F909-41B6-AB20-1C714387C1F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6682AB3F-7176-401E-A290-8136E89CAE38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6682AB3F-7176-401E-A290-8136E89CAE38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6682AB3F-7176-401E-A290-8136E89CAE38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6682AB3F-7176-401E-A290-8136E89CAE38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED75E929-F909-41B6-AB20-1C714387C1F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED75E929-F909-41B6-AB20-1C714387C1F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED75E929-F909-41B6-AB20-1C714387C1F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED75E929-F909-41B6-AB20-1C714387C1F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {993410BD-6CCF-46D2-826B-EB52A241B289}
+	EndGlobalSection
+EndGlobal
