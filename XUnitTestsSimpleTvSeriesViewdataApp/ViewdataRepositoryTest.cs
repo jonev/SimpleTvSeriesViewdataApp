@@ -110,7 +110,7 @@ namespace XUnitTestsSimpleTvSeriesViewdataApp
         public void Test_getAllData(string seriesId, string date, int entries)
         {
             DateTime dt = DateTime.Parse(date);
-            var res = _instance.getAllData(seriesId, dt);
+            var res = _instance.getAllDataOnOneSeriesIdAtDate(seriesId, dt);
             Assert.Equal(entries, res.Count);
         }
     }

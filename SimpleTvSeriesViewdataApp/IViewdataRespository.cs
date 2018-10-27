@@ -11,6 +11,6 @@ namespace SimpleTvSeriesViewdataApp
         List<Viewdata> getAllSeriesIdAndViewsSortedOnDate();
         List<Viewdata> getAllSeriesIdViewdOnTv();
         Viewdata getTheMostPopularInYear2018();
-        List<Viewdata> getAllData(string seriesId, DateTime date);
+        List<Viewdata> getAllDataOnOneSeriesIdAtDate(string seriesId, DateTime date);
     }
 }

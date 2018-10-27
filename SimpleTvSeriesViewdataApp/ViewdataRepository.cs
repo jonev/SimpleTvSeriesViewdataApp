@@ -15,7 +15,7 @@ namespace SimpleTvSeriesViewdataApp
         {
             _data = data;
         }
-        public List<Viewdata> getAllData(string seriesId, DateTime date)
+        public List<Viewdata> getAllDataOnOneSeriesIdAtDate(string seriesId, DateTime date)
         {
             return _data.Where(s => s.SeriesId == seriesId && s.Date.Equals(date)).ToList();
         }

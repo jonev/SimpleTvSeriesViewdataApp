@@ -96,7 +96,7 @@ namespace SimpleTvSeriesViewdataApp
         [HttpGet("getAllData/{id}/{date}")]
         public List<Viewdata> getAllData(string id, DateTime date)
         {
-            return _data.getAllData(id, date);
+            return _data.getAllDataOnOneSeriesIdAtDate(id, date);
         }
     }
 }
