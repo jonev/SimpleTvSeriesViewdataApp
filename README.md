@@ -16,3 +16,5 @@ HttpGet's
 - api/getAllSeriesIdViewdOnTv
 - api/getTheMostPopularInYear2018
 - api/getAllDataOnOneSeriesIdAtDate/{id}/{date}
+
+To apply your own testdata view SimpleTvSeriesViewdataApp/SimpleTvSeriesViewdataApp/data/README.txt
