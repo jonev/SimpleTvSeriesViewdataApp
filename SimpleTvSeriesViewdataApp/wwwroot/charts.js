@@ -2,7 +2,6 @@
 function getChartAllSeriesIdAndViews() {
     var ctx = $("#chartAllSeriesIdAndViews");
     getAllSeriesIdAndViews((data) => {
-        console.log(data);
         var arrLabels = [];
         var arrViews = [];
         for (var i = 0; i < data.length; i++) { // todo a better  way must exist
@@ -26,6 +25,7 @@ function getChartAllSeriesIdAndViews() {
             options: {}
         });
     }, (err) => {
+        console.log(err);
         // todo errorhandling
     });
 }
@@ -33,7 +33,6 @@ function getChartAllSeriesIdAndViews() {
 function getChartAllSeriesIdAndViewsSortedOnDate() {
     var ctx = $("#chartAllSeriesIdAndViewsSortedOnDate");
     getAllSeriesIdAndViewsSortedOnDate((data) => {
-        console.log(data);
         var arrLabels = [];
         var arrViews = [];
         for (var i = 0; i < data.length; i++) { // todo a better  way must exist
@@ -54,6 +53,7 @@ function getChartAllSeriesIdAndViewsSortedOnDate() {
             options: {}
         });
     }, (err) => {
+        console.log(err);
         // todo errorhandling
     });
 }
@@ -61,7 +61,6 @@ function getChartAllSeriesIdAndViewsSortedOnDate() {
 function getChartAllSeriesIdViewdOnTv() {
     var ctx = $("#chartAllSeriesIdViewdOnTv");
     getAllSeriesIdViewdOnTv((data) => {
-        console.log(data);
         var arrLabels = [];
         var arrViews = [];
         for (var i = 0; i < data.length; i++) { // todo a better  way must exist
@@ -82,6 +81,7 @@ function getChartAllSeriesIdViewdOnTv() {
             options: {}
         });
     }, (err) => {
+        console.log(err);
         // todo errorhandling
     });
 }
@@ -89,7 +89,6 @@ function getChartAllSeriesIdViewdOnTv() {
 function getChartTheMostPopularInYear2018() { // todo chart with screen as labels
     var ctx = $("#chartTheMostPopularInYear2018");
     getTheMostPopularInYear2018((data) => {
-        console.log(data);
         var arrLabels = [];
         var arrViews = [];
         for (var i = 0; i < data.length; i++) { // todo a better  way must exist
@@ -101,17 +100,44 @@ function getChartTheMostPopularInYear2018() { // todo chart with screen as label
             data: {
                 labels: arrLabels,
                 datasets: [{
-                    label: "The most popular in 2018: " + data.seriesId,
+                    label: "The most popular in 2018: " + data[0].seriesId,
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: arrViews,
+                    data: arrViews
                 }]
             },
             options: {}
         });
     }, (err) => {
         // todo errorhandling
-        });
+        console.log(err);
+    });
+}
 
-    // todo getAllDataOnOneSeriesIdAtDate
+function getChartAllDataOnOneSeriesIdAtDate(seriesId, date) { // todo chart with screen as labels
+    var ctx = $("#chartAllDataOnOneSeriesIdAtDate");
+    getAllDataOnOneSeriesIdAtDate(seriesId, date, (data) => {
+        var arrLabels = [];
+        var arrViews = [];
+        for (var i = 0; i < data.length; i++) { // todo a better  way must exist
+            arrLabels.push(data[i].screen);
+            arrViews.push(data[i].views);
+        }
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: arrLabels,
+                datasets: [{
+                    label: seriesId + " at " + date,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: arrViews
+                }]
+            },
+            options: {}
+        });
+    }, (err) => {
+        // todo errorhandling
+        console.log(err);
+    });
 }

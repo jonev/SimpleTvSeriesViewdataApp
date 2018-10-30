@@ -15,54 +15,64 @@ namespace SimpleTvSeriesViewdataApp
         {
             _data = data;
         }
-        public List<Viewdata> getAllDataOnOneSeriesIdAtDate(string seriesId, DateTime date)
-        {
-            return _data.Where(s => s.SeriesId == seriesId && s.Date.Equals(date)).ToList();
-        }
 
         // source https://stackoverflow.com/questions/35662319/linq-sum-distinct-values-quantity-and-total
         public List<Viewdata> getAllSeriesIdAndViews()
         {
-            return _data.GroupBy(d => d.SeriesId)
+            return _data.GroupBy(d => d.seriesId)
                             .Select(v => new Viewdata
                             {
-                                SeriesId = v.First().SeriesId,
-                                Date = new DateTime(),
-                                Screen = "All",
-                                Views = v.Sum(t => t.Views)
+                                seriesId = v.First().seriesId,
+                                date = new DateTime(),
+                                screen = "All",
+                                views = v.Sum(t => t.views)
                             }).ToList();
         }
 
         // source https://stackoverflow.com/questions/5231845/c-sharp-linq-group-by-on-multiple-columns/5232194
         public List<Viewdata> getAllSeriesIdAndViewsSortedOnDate()
         {
-         return _data.GroupBy(d => new { d.Date, d.SeriesId })
+         return _data.GroupBy(d => new { d.date, d.seriesId })
                         .Select(v => new Viewdata
                         {
-                            SeriesId = v.Key.SeriesId,
-                            Date = v.Key.Date,
-                            Screen = "All",
-                            Views = v.Sum(x => x.Views)
-                        }).OrderBy(y => y.Date)
+                            seriesId = v.Key.seriesId,
+                            date = v.Key.date,
+                            screen = "All",
+                            views = v.Sum(x => x.views)
+                        }).OrderBy(y => y.date)
                         .ToList();
         }
 
         public List<Viewdata> getAllSeriesIdViewdOnTv()
         {
-            return _data.Where(s => s.Screen == "tv")
-                            .GroupBy(g => g.SeriesId)
+            return _data.Where(s => s.screen == "tv")
+                            .GroupBy(g => g.seriesId)
                             .Select(d => new Viewdata
                             {
-                                SeriesId = d.First().SeriesId,
-                                Date = new DateTime(),
-                                Screen = "tv",
-                                Views = d.Sum(v => v.Views)
+                                seriesId = d.First().seriesId,
+                                date = new DateTime(),
+                                screen = "tv",
+                                views = d.Sum(v => v.views)
                             }).ToList();
         }
 
-        public Viewdata getTheMostPopularInYear2018()
+        public List<Viewdata> getTheMostPopularInYear2018()
         {
-            return getAllSeriesIdAndViews().OrderByDescending(x => x.Views).First();
+            Viewdata mostPopular = getAllSeriesIdAndViews().OrderByDescending(x => x.views).First();
+            return _data.Where(s => s.seriesId == mostPopular.seriesId)
+                        .GroupBy(g => g.screen)
+                        .Select(d => new Viewdata
+                        {
+                            seriesId = d.First().seriesId,
+                            date = new DateTime(),
+                            screen = d.First().screen,
+                            views = d.Sum(v => v.views)
+                        }).ToList();
+        }
+
+        public List<Viewdata> getAllDataOnOneSeriesIdAtDate(string seriesId, DateTime date)
+        {
+            return _data.Where(s => s.seriesId == seriesId && s.date.Equals(date)).ToList();
         }
     }
 }

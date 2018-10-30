@@ -2,6 +2,7 @@ using SimpleTvSeriesViewdataApp;
 using SimpleTvSeriesViewdataApp.models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace XUnitTestsSimpleTvSeriesViewdataApp
@@ -17,52 +18,52 @@ namespace XUnitTestsSimpleTvSeriesViewdataApp
             {
                 new Viewdata
                 {
-                    SeriesId = "id1",
-                    Date = new DateTime(2018, 1, 1, 0, 0, 0, 0),
-                    Screen = "tv",
-                    Views = 100
+                    seriesId = "id1",
+                    date = new DateTime(2018, 1, 1, 0, 0, 0, 0),
+                    screen = "tv",
+                    views = 100
                 },
                 new Viewdata
                 {
-                    SeriesId = "id2",
-                    Date = new DateTime(2018, 1, 3, 0, 0, 0, 0),
-                    Screen = "mobile",
-                    Views = 100
+                    seriesId = "id2",
+                    date = new DateTime(2018, 1, 3, 0, 0, 0, 0),
+                    screen = "mobile",
+                    views = 100
                 },
                 new Viewdata
                 {
-                    SeriesId = "id2",
-                    Date = new DateTime(2018, 1, 3, 0, 0, 0, 0),
-                    Screen = "desktop",
-                    Views = 100
+                    seriesId = "id2",
+                    date = new DateTime(2018, 1, 3, 0, 0, 0, 0),
+                    screen = "desktop",
+                    views = 100
                 },
                 new Viewdata
                 {
-                    SeriesId = "id2",
-                    Date = new DateTime(2018, 1, 2, 0, 0, 0, 0),
-                    Screen = "mobile",
-                    Views = 100
+                    seriesId = "id2",
+                    date = new DateTime(2018, 1, 2, 0, 0, 0, 0),
+                    screen = "mobile",
+                    views = 100
                 },
                 new Viewdata
                 {
-                    SeriesId = "id2",
-                    Date = new DateTime(2018, 1, 2, 0, 0, 0, 0),
-                    Screen = "tablet",
-                    Views = 200
+                    seriesId = "id2",
+                    date = new DateTime(2018, 1, 2, 0, 0, 0, 0),
+                    screen = "tablet",
+                    views = 200
                 },
                 new Viewdata
                 {
-                    SeriesId = "id3",
-                    Date = new DateTime(2018, 1, 2, 0, 0, 0, 0),
-                    Screen = "tv",
-                    Views = 500
+                    seriesId = "id3",
+                    date = new DateTime(2018, 1, 2, 0, 0, 0, 0),
+                    screen = "tv",
+                    views = 500
                 },
                 new Viewdata
                 {
-                    SeriesId = "id3",
-                    Date = new DateTime(2018, 1, 2, 0, 0, 0, 0),
-                    Screen = "tv",
-                    Views = 500
+                    seriesId = "id3",
+                    date = new DateTime(2018, 1, 2, 0, 0, 0, 0),
+                    screen = "tv",
+                    views = 500
                 }
             });
         }
@@ -72,9 +73,9 @@ namespace XUnitTestsSimpleTvSeriesViewdataApp
         {
             var res = _instance.getAllSeriesIdAndViews();
             Assert.Equal(3, res.Count);
-            Assert.Equal(100, res[0].Views);
-            Assert.Equal(500, res[1].Views);
-            Assert.Equal(1000, res[2].Views);
+            Assert.Equal(100, res[0].views);
+            Assert.Equal(500, res[1].views);
+            Assert.Equal(1000, res[2].views);
         }
 
         [Fact]
@@ -82,10 +83,10 @@ namespace XUnitTestsSimpleTvSeriesViewdataApp
         {
             var res = _instance.getAllSeriesIdAndViewsSortedOnDate();
             Assert.Equal(4, res.Count);
-            Assert.Equal(100, res[0].Views);
-            Assert.Equal(300, res[1].Views);
-            Assert.Equal(1000, res[2].Views);
-            Assert.Equal(200, res[3].Views);
+            Assert.Equal(100, res[0].views);
+            Assert.Equal(300, res[1].views);
+            Assert.Equal(1000, res[2].views);
+            Assert.Equal(200, res[3].views);
         }
 
         [Fact]
@@ -93,15 +94,15 @@ namespace XUnitTestsSimpleTvSeriesViewdataApp
         {
             var res = _instance.getAllSeriesIdViewdOnTv();
             Assert.Equal(2, res.Count);
-            Assert.Equal(100, res[0].Views);
-            Assert.Equal(1000, res[1].Views);
+            Assert.Equal(100, res[0].views);
+            Assert.Equal(1000, res[1].views);
         }
 
         [Fact]
         public void Test_getTheMostPopularInYear2018()
         {
             var res = _instance.getTheMostPopularInYear2018();
-            Assert.Equal(1000, res.Views);
+            Assert.Equal(1000, res.Sum(v => v.views));
         }
 
         [Theory]

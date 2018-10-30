@@ -52,10 +52,10 @@ function getTheMostPopularInYear2018(onSuccess, onError) {
     });
 }
 
-function getAllData(seriesId, date, onSuccess, onError) {
+function getAllDataOnOneSeriesIdAtDate(seriesId, date, onSuccess, onError) {
     $.ajax({
         type: 'GET',
-        url: uri + "getAllData/" + seriesId + "/" + date,
+        url: uri + "getAllDataOnOneSeriesIdAtDate/" + seriesId + "/" + date,
         success: function (data) {
             onSuccess(data);
         },
